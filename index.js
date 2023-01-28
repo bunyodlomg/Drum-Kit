@@ -2,27 +2,22 @@ const drums = document.querySelectorAll('.drum');
 drums.forEach((drum) => {
     drum.addEventListener('click', () => {
         playAudio(drum.textContent)
-        pressed(drum)
+        // pressed(drum)
     });
 
 });
 
 document.body.addEventListener("keydown", (e) => {
     const drum = document.querySelector(`.${e.key}`);
-    playAudio(`${e.key}`);
-    pressed(drum);
+    playAudio(e.key);
+    // pressed(drum);
 });
-function pressed(drum) {
-    drum.classList.add('pressed');
-    setTimeout(() => {
-        drum.classList.remove('pressed');
-    }, 100)
-}
 function playAudio(id) {
     let sound;
     switch (id) {
         case 'w':
             sound = new Audio('./sounds/crash.mp3');
+            sound.play();
             break;
         case 'a':
             sound = new Audio('./sounds/kick-bass.mp3');
@@ -34,6 +29,7 @@ function playAudio(id) {
             break;
         case 'd':
             sound = new Audio('./sounds/tom-1.mp3');
+            sound.play();
             break;
         case 'j':
             sound = new Audio('./sounds/tom-2.mp3');
@@ -51,3 +47,9 @@ function playAudio(id) {
             break;
     }
 }
+// function pressed(drum) {
+//     drum.classList.add('pressed');
+//     setTimeout(() => {
+//         drum.classList.remove('pressed');
+//     }, 1)
+// }
